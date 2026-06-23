@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0">
+    <meta name="description" content="Chelcapu's Nightmare - Un juego de supervivencia en primera persona en las calles de Barcelona.">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="#0a0a1a">
+    <title>Chelcapu's Nightmare</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Press+Start+2P&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Title Screen -->
+    <div id="title-screen">
+        <div class="title-overlay"></div>
+        <div class="title-content">
+            <h1 class="game-title">
+                <span class="title-chelcapu">Chelcapu's</span>
+                <span class="title-nightmare">Nightmare</span>
+            </h1>
+            <p class="title-subtitle">Barcelona · La Pesadilla</p>
+            <button id="start-btn" class="start-button">
+                <span class="btn-text">JUGAR</span>
+                <span class="btn-glow"></span>
+            </button>
+            <p class="tap-hint">Toca para empezar</p>
+        </div>
+        <div class="title-particles" id="title-particles"></div>
+    </div>
+
+    <!-- Game Screen -->
+    <div id="game-screen" style="display: none;">
+        <canvas id="gameCanvas"></canvas>
+        
+        <!-- HUD -->
+        <div id="hud">
+            <div class="hud-left">
+                <div class="player-profile">
+                    <div class="portrait-container">
+                        <img src="chelcapu.jpg" alt="Chelcapú" class="player-portrait">
+                    </div>
+                    <div class="player-stats">
+                        <div class="health-bar-container">
+                            <div class="health-bar">
+                                <div class="health-fill" id="health-fill"></div>
+                            </div>
+                        </div>
+                        <div class="score-display">
+                            <span class="score-label">SCORE</span>
+                            <span class="score-value" id="score-value">0</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="hud-right">
+                <div class="timer-display">
+                    <span class="timer-icon">⏱️</span>
+                    <span class="timer-value" id="timer-value">0:00</span>
+                </div>
+                <div class="enemies-display">
+                    <span class="enemies-icon">👁️</span>
+                    <span class="enemies-value" id="enemies-value">0</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Damage vignette -->
+        <div id="damage-vignette"></div>
+
+        <!-- Mobile Controls -->
+        <div id="mobile-controls">
+            <!-- Left Joystick: Movement -->
+            <div id="joystick-zone">
+                <div id="joystick-base">
+                    <div id="joystick-thumb"></div>
+                </div>
+            </div>
+            <!-- Right zone: Look -->
+            <div id="look-zone"></div>
+            <!-- Sprint Button -->
+            <div id="sprint-btn">
+                <span>🏃</span>
+            </div>
+            <!-- Attack Button -->
+            <div id="attack-btn">
+                <span>🍖</span>
+            </div>
+        </div>
+
+        <!-- Minimap -->
+        <canvas id="minimapCanvas"></canvas>
+    </div>
+
+    <!-- Game Over Screen -->
+    <div id="gameover-screen" style="display: none;">
+        <div class="gameover-overlay"></div>
+        <div class="gameover-content">
+            <h2 class="gameover-title">PESADILLA TERMINADA</h2>
+            <div class="gameover-stats">
+                <div class="stat-item">
+                    <span class="stat-label">Tiempo Sobrevivido</span>
+                    <span class="stat-value" id="final-time">0:00</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Puntuación</span>
+                    <span class="stat-value" id="final-score">0</span>
+                </div>
+            </div>
+            <button id="restart-btn" class="start-button">
+                <span class="btn-text">REINTENTAR</span>
+                <span class="btn-glow"></span>
+            </button>
+        </div>
+    </div>
+
+    <script src="game.js"></script>
+</body>
+</html>
