@@ -1895,7 +1895,7 @@ function setupInput() {
             for (const touch of e.changedTouches) {
                 if (touch.identifier === game.input.lookTouchId) {
                     const dx = touch.clientX - game.input.lookLastX;
-                    game.input.rotDelta += dx * 0.12;
+                    game.input.rotDelta += dx * 0.45; // Increased sensitivity
                     game.input.lookLastX = touch.clientX;
                 }
             }
@@ -1951,7 +1951,8 @@ function resizeCanvas() {
     
     const isMobile = window.innerWidth <= 768;
     game.renderWidth = isMobile ? 320 : 480;
-    game.renderHeight = isMobile ? 200 : 320;
+    const aspectRatio = window.innerHeight / window.innerWidth;
+    game.renderHeight = Math.floor(game.renderWidth * Math.min(aspectRatio, 2.5)); // cap aspect ratio
     game.buffer.width = game.renderWidth;
     game.buffer.height = game.renderHeight;
     game.bufCtx = game.buffer.getContext('2d');
